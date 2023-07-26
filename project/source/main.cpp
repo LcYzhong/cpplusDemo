@@ -1,13 +1,22 @@
 #include <iostream>
 #include <string.h>
 #include <string>
-#include "printSum.h"
+#include "ProduceConsume.h"
+void fun_test()
+{
+    std::cout<<"test"<<std::endl;
+};
 int main() {
-    
-    int data[] = {1,2,3,4,5,6};
-    printf("data : %p\n",data);
-    printf("&data : %p\n",&data);
-    printf("&data+1 : %p\n",&data+1);
-    printf("data+1 : %p\n",data+1);
-}
+
+    std::thread task_pro(
+        &SingleProduceSingleConsume::produce_task,
+        &SingleProduceSingleConsume::getInstance());
+    std::thread task_con(
+        &SingleProduceSingleConsume::consume_task,
+        &SingleProduceSingleConsume::getInstance()
+    );
+    task_con.join();
+    task_pro.join();
+    return 0;
+};
   
