@@ -1,2 +1,5 @@
-用于记录基础的c++ demo(例如经典进程同步问题)
+生产者消费者
+string  vector socket  涉及的一些细节技术
+线程池
+八股文
 cmake . -G "Unix Makefiles"
